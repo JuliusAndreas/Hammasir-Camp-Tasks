@@ -23,19 +23,19 @@ public class Account {
         return balance;
     }
 
-    public void increaseBalance(Long balance){
-        synchronized (this.balance){
+    public void increaseBalance(Long balance) {
+        synchronized (this.balance) {
             this.balance += balance;
         }
     }
 
-    public void decreaseBalance(Long balance){
-        synchronized (this.balance){
+    public void decreaseBalance(Long balance) {
+        synchronized (this.balance) {
             this.balance -= balance;
         }
     }
 
-    public String toString(){
+    public String toString() {
         return "[" + this.id + "," + this.accountName + "," + this.balance + "]";
     }
 }

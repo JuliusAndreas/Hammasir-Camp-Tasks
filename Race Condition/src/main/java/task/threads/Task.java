@@ -24,11 +24,13 @@ public class Task implements Runnable {
         Integer startingPoint = this.taskId * this.eachThreadShare;
         Integer endingPoint = startingPoint + (this.eachThreadShare - 1);
         for (int i = startingPoint; i < endingPoint; i++) {
-            Integer fromAccountIndex = this.transactions.get(i).from();
-            Integer toAccountIndex = this.transactions.get(i).to();
-            Long transAmount = this.transactions.get(i).amount();
-            this.accounts.get(fromAccountIndex).decreaseBalance(transAmount);
-            this.accounts.get(toAccountIndex).increaseBalance(transAmount);
+            if (i < transactions.size()) {
+                Integer fromAccountIndex = this.transactions.get(i).from() - 1;
+                Integer toAccountIndex = this.transactions.get(i).to() - 1;
+                Long transAmount = this.transactions.get(i).amount();
+                this.accounts.get(fromAccountIndex).decreaseBalance(transAmount);
+                this.accounts.get(toAccountIndex).increaseBalance(transAmount);
+            }
         }
     }
 }

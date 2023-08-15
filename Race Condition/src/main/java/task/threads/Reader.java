@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Reader {
 
-    public static List<Account> parseAccounts(String path){
+    public static List<Account> parseAccounts(String path) {
         Scanner sc = null;
         try {
             sc = new Scanner(new File(path));
@@ -39,7 +39,7 @@ public class Reader {
         return accounts;
     }
 
-    public static List<Transaction> parseTransactions(String path){
+    public static List<Transaction> parseTransactions(String path) {
         Scanner sc = null;
         try {
             sc = new Scanner(new File(path));
@@ -64,7 +64,7 @@ public class Reader {
             String part1 = sc.next();
             String part2 = sc.next();
             String resString = part1.concat(part2);
-            resString = resString.replaceAll("\\D","");
+            resString = resString.replaceAll("\\D", "");
             Long amount = Long.valueOf(resString);
 
             transactions.add(new Transaction(from, to, amount));
