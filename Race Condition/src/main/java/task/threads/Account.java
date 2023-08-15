@@ -22,4 +22,16 @@ public class Account {
     public Long getBalance() {
         return balance;
     }
+
+    public void increaseBalance(Long balance){
+        synchronized (this.balance){
+            this.balance += balance;
+        }
+    }
+
+    public void decreaseBalance(Long balance){
+        synchronized (this.balance){
+            this.balance -= balance;
+        }
+    }
 }
