@@ -30,6 +30,5 @@ public class Task implements Runnable {
             this.accounts.get(fromAccountIndex).decreaseBalance(transAmount);
             this.accounts.get(toAccountIndex).increaseBalance(transAmount);
         }
-
     }
 }

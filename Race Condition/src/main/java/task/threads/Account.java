@@ -34,4 +34,8 @@ public class Account {
             this.balance -= balance;
         }
     }
+
+    public String toString(){
+        return "[" + this.id + "," + this.accountName + "," + this.balance + "]";
+    }
 }
