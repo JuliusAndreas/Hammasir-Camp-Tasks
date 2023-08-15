@@ -22,7 +22,9 @@ public class Task implements Runnable {
     @Override
     public void run() {
         Integer startingPoint = this.taskId * this.eachThreadShare;
-        Integer endingPoint = startingPoint + (this.eachThreadShare - 1);
+        Integer endingPoint =
+                this.taskId == this.totalThreads - 1 ?
+                        transactions.size() - 1 : startingPoint + (this.eachThreadShare - 1);
         for (int i = startingPoint; i < endingPoint; i++) {
             if (i < transactions.size()) {
                 Integer fromAccountIndex = this.transactions.get(i).from() - 1;
@@ -30,7 +32,7 @@ public class Task implements Runnable {
                 Long transAmount = this.transactions.get(i).amount();
                 this.accounts.get(fromAccountIndex).decreaseBalance(transAmount);
                 this.accounts.get(toAccountIndex).increaseBalance(transAmount);
-            }
+            } else break;
         }
     }
 }
