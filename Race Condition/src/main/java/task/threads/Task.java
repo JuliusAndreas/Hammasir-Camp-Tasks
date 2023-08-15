@@ -25,7 +25,7 @@ public class Task implements Runnable {
         Integer endingPoint =
                 this.taskId == this.totalThreads - 1 ?
                         transactions.size() - 1 : startingPoint + (this.eachThreadShare - 1);
-        for (int i = startingPoint; i < endingPoint; i++) {
+        for (int i = startingPoint; i <= endingPoint; i++) {
             if (i < transactions.size()) {
                 Integer fromAccountIndex = this.transactions.get(i).from() - 1;
                 Integer toAccountIndex = this.transactions.get(i).to() - 1;
