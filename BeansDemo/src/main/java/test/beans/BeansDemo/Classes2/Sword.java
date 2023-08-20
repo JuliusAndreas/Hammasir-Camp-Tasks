@@ -4,18 +4,18 @@ import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Qualifier(value = "swordnnnnn, swordTwo")
-public class Sword implements FactoryBean<Object> {
+//@Qualifier(value = "swordOne, swordTwo")
+public class Sword {
     private String name;
-    @Override
-    public Class<Sword> getObjectType() {
-        return Sword.class;
-    }
-
-    @Override
-    public Object getObject() throws Exception {
-        return new Sword();
-    }
+//    @Override
+//    public Class<Sword> getObjectType() {
+//        return Sword.class;
+//    }
+//
+//    @Override
+//    public Object getObject() throws Exception {
+//        return new Sword();
+//    }
 
     public void setName(String name) {
         this.name = name;
