@@ -1,6 +1,7 @@
 package task.threads;
 
 public class Account {
+    final private Integer lock = Integer.valueOf(1);
     private Integer id;
     private String accountName;
     private Long balance;

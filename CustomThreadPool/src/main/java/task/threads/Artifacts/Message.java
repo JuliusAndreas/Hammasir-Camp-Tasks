@@ -4,6 +4,11 @@ public class Message {
     private String head;
     private volatile String body;
 
+    public Message(String head, String body) {
+        this.head = head;
+        this.body = body;
+    }
+
     public String getHead() {
         return head;
     }
