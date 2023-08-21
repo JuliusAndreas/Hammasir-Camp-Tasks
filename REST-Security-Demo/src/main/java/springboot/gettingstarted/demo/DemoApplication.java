@@ -1,6 +1,8 @@
 package springboot.gettingstarted.demo;
 
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,14 +16,14 @@ import java.util.Map;
 
 @SpringBootApplication
 @RestController
-public class DemoApplication {
+public class DemoApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 
 		SpringApplication.run(DemoApplication.class, args);
 	}
 	@GetMapping("/hell")
-	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return String.format("Hello %s!", name);
+	public String hello(@RequestParam(value = "name", defaultValue = "World") String name, @Value("Data") String v) {
+		return String.format("Hello %s!", name.concat(v));
 	}
 	@GetMapping("/{id}")
 	public Book getBook(@PathVariable int id) {
@@ -49,4 +51,8 @@ public class DemoApplication {
 				String.format("Listed %d headers", headers.size()), HttpStatus.OK);
 	}
 
+	@Override
+	public void run(String... args) throws Exception {
+		System.out.println("Starting the whole thing...");
+	}
 }
